@@ -2,8 +2,6 @@ package it.marconivr.microblog.controller;
 
 import java.util.List;
 import java.util.Optional;
-
-import javax.inject.Qualifier;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
