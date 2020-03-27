@@ -10,20 +10,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import it.marconivr.microblog.entity.Post;
-import it.marconivr.microblog.entity.repository.PostRepository;
+import it.marconivr.microblog.entity.dao.PostDao;
+import it.marconivr.microblog.service.serviceImpl.PostServiceImpl;
 
 @Component
 @Path("/posts")
-public class PostController 
+public class PostController
 {
-	@Autowired
-	private PostRepository postRep;
-	
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Post newPost(Post p)
-	{
-		return postRep.saveAndFlush(p);
-	}
+    @Autowired
+    private PostServiceImpl postServiceImpl;
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Post newPost(Post p)
+    {
+        return postServiceImpl.savePost(p);
+    }
 }

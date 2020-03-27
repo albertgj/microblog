@@ -15,41 +15,40 @@ import org.springframework.stereotype.Component;
 
 import it.marconivr.microblog.entity.Persona;
 import it.marconivr.microblog.entity.Post;
-import it.marconivr.microblog.entity.repository.PersonaRepository;
-import it.marconivr.microblog.entity.repository.PostRepository;
+import it.marconivr.microblog.entity.dao.PersonaDao;
+import it.marconivr.microblog.entity.dao.PostDao;
+import it.marconivr.microblog.service.PersonaService;
 
 @Component
 @Path("/persone")
-public class PersonaController 
+public class PersonaController
 {
-	@Autowired
-	private PersonaRepository personaRep;
-	@Autowired
-	private PostRepository postRep;
-	
-	@GET
-	@Path("/all")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Persona> findAll() 
-	{
-		return personaRep.findAll();
-	}
-	
-	@GET
-	@Path("/posts/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Optional<Post> findPosts(@PathParam("id") Long id)
-	{
-		//Persona p = personaRep.findById(id).get();
-		
-		return postRep.findById(id);
-	}
-	
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Persona newPersona(Persona p) 
-	{
-		return personaRep.saveAndFlush(p);
-	}
+    @Autowired
+    private PersonaService personaService;
+    
+    @GET
+    @Path("/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Persona> findAll()
+    {
+        return personaService.findAll();
+    }
+
+    @GET
+    @Path("/posts/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Optional<Post> findPosts(@PathParam("id") Long id)
+    {
+        //Persona p = personaRep.findById(id).get();
+
+        return personaService.findPost(id);
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Persona newPersona(Persona p)
+    {
+        return personaService.savePersona(p);
+    }
 }

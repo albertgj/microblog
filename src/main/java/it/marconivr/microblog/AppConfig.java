@@ -12,9 +12,10 @@ import it.marconivr.microblog.controller.PostController;
 @ApplicationPath("${spring.jersey.application-path:/}")
 public class AppConfig extends ResourceConfig
 {
-	public AppConfig()
-	{
-		this.register(PersonaController.class);
-		this.register(PostController.class);
-	}
+
+    public AppConfig()
+    {
+        this.register(PersonaController.class);
+        this.register(PostController.class);
+    }
 }
