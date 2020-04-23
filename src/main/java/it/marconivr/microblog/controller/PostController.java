@@ -39,9 +39,10 @@ public class PostController
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public ResponseEntity<JsonResponseBody> save(Post p)
+    public Post save(Post p)
     {
-        return ResponseEntity.status(HttpStatus.CREATED).body(new JsonResponseBody(HttpStatus.CREATED.value(), postService.save(p)));
+        //ResponseEntity.status(HttpStatus.CREATED).body(new JsonResponseBody(HttpStatus.CREATED.value(), postService.save(p)))
+        return postService.save(p);
     }
     
     @DELETE
