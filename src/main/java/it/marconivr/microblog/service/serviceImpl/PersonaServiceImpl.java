@@ -1,13 +1,14 @@
 package it.marconivr.microblog.service.serviceImpl;
 
-import it.marconivr.microblog.entity.dao.PersonaDao;
-import it.marconivr.microblog.entity.dao.PostDao;
+import it.marconivr.microblog.dao.PersonaDao;
 import it.marconivr.microblog.entity.Persona;
 import it.marconivr.microblog.entity.Post;
 import it.marconivr.microblog.service.PersonaService;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,11 +18,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class PersonaServiceImpl implements PersonaService
 {
+
     @Autowired
     private PersonaDao personaDao;
     @Autowired
-    private PostDao postDao;
-    
+    private PasswordEncoder bcryptEncoder;
+
     @Override
     public List<Persona> findAll()
     {
@@ -35,14 +37,31 @@ public class PersonaServiceImpl implements PersonaService
     }
 
     @Override
-    public Optional<Post> findPost(Long id)
+    public Persona save(Persona p)
     {
-        return postDao.findById(id);
+        Persona persona = new Persona();
+        persona.setUsername(p.getUsername());
+        persona.setPassword(bcryptEncoder.encode(p.getPassword()));
+        
+        return personaDao.saveAndFlush(persona);
     }
 
     @Override
-    public Persona savePersona(Persona p)
+    public void deleteById(Long id)
     {
-        return personaDao.saveAndFlush(p);
+        personaDao.deleteById(id);
     }
+
+    @Override
+    public List<Post> getPostsOfUser(Long id)
+    {
+        return personaDao.findPostsOfUser(id);
+    }
+
+    @Override
+    public Persona findByUsername(String username)
+    {
+        return personaDao.findByUsername(username);
+    }
+
 }

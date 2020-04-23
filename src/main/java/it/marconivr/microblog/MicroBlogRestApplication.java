@@ -4,10 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MicroblogApplication {
+public class MicroBlogRestApplication
+{
 
-	public static void main(String[] args) {
-		SpringApplication.run(MicroblogApplication.class, args);
-	}
+    public static void main(String[] args)
+    {
+        SpringApplication.run(MicroBlogRestApplication.class, args);
+    }
 
 }
