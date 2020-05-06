@@ -32,9 +32,9 @@ public class CommentController
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Comment> findAll()
+    public ResponseEntity<JsonResponseBody> findAll()
     {
-        return commentService.findAll();
+        return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), commentService.findAll()));
     }
 
     @POST
@@ -42,7 +42,7 @@ public class CommentController
     @Produces(MediaType.APPLICATION_JSON)
     public ResponseEntity<JsonResponseBody> save(Comment c)
     {
-        return ResponseEntity.status(HttpStatus.CREATED).body(new CommentController.JsonResponseBody(HttpStatus.CREATED.value(), commentService.save(c)));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new JsonResponseBody(HttpStatus.CREATED.value(), commentService.save(c)));
     }
 
     @AllArgsConstructor

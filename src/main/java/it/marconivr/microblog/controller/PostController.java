@@ -34,7 +34,6 @@ public class PostController
         
         return ResponseEntity.status(HttpStatus.OK)
                 .body(new JsonResponseBody(HttpStatus.OK.value(), postService.findAll()));
-        //return postService.findAll();
     }
     
     @POST
@@ -48,10 +47,10 @@ public class PostController
     
     @DELETE
     @Path("/{id}")
-    public void deleteById(@PathParam("id") Long id)
+    public ResponseEntity<JsonResponseBody> deleteById(@PathParam("id") Long id)
     {
         postService.deleteById(id);
-        //return ResponseEntity.status(HttpStatus.NO_CONTENT).body(new PostController.JsonResponseBody(HttpStatus.NO_CONTENT.value(), null));
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(new PostController.JsonResponseBody(HttpStatus.NO_CONTENT.value(), null));
     }
     
     @GET
