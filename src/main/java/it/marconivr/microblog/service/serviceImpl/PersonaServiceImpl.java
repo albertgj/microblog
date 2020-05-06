@@ -18,8 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PersonaServiceImpl implements PersonaService
 {
-
-    @Autowired
+@Autowired
     private PersonaDao personaDao;
     @Autowired
     private PasswordEncoder bcryptEncoder;
@@ -63,5 +62,4 @@ public class PersonaServiceImpl implements PersonaService
     {
         return personaDao.findByUsername(username);
     }
-
 }

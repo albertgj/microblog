@@ -5,6 +5,7 @@ import it.marconivr.microblog.entity.Comment;
 import it.marconivr.microblog.entity.Post;
 import it.marconivr.microblog.service.PostService;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

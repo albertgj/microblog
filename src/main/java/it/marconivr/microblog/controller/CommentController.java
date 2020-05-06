@@ -1,7 +1,6 @@
 package it.marconivr.microblog.controller;
 
 import it.marconivr.microblog.entity.Comment;
-import it.marconivr.microblog.entity.Post;
 import it.marconivr.microblog.service.CommentService;
 import java.util.List;
 import javax.ws.rs.Consumes;
@@ -22,6 +21,7 @@ import org.springframework.stereotype.Component;
  *
  * @author albert
  */
+
 @Component
 @Path("/commenti")
 public class CommentController

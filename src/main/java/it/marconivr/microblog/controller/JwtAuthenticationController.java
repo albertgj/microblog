@@ -4,7 +4,6 @@ import it.marconivr.microblog.entity.Persona;
 import it.marconivr.microblog.security.JwtRequest;
 import it.marconivr.microblog.security.JwtResponse;
 import it.marconivr.microblog.security.JwtTokenUtil;
-import it.marconivr.microblog.security.PersonaDTO;
 import it.marconivr.microblog.service.PersonaService;
 import it.marconivr.microblog.service.serviceImpl.JwtUserDetailsServiceImpl;
 import javax.ws.rs.Consumes;
@@ -18,7 +17,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 
 /**
@@ -26,11 +24,9 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @author albert
  */
 @Component
-@CrossOrigin
 @Path("/")
 public class JwtAuthenticationController
 {
-
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired

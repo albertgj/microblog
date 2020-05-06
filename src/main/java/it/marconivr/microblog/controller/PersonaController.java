@@ -1,14 +1,7 @@
 package it.marconivr.microblog.controller;
 
-import com.holonplatform.jaxrs.swagger.annotations.ApiConfiguration;
-import com.holonplatform.jaxrs.swagger.annotations.ApiDefinition;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import it.marconivr.microblog.entity.Persona;
 import it.marconivr.microblog.service.PersonaService;
-import java.util.List;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import lombok.AllArgsConstructor;
@@ -23,8 +16,6 @@ import org.springframework.stereotype.Component;
  *
  * @author albert
  */
-@ApiConfiguration(path = "/api/docs")
-@Api("Test API")
 @Component
 @Path("/persone")
 public class PersonaController
@@ -35,9 +26,9 @@ public class PersonaController
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Persona> findAll()
+    public ResponseEntity<JsonResponseBody> findAll()
     {
-        /*
+
         if (!personaService.findAll().isEmpty())
         {
             return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), personaService.findAll()));
@@ -45,8 +36,6 @@ public class PersonaController
         {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new JsonResponseBody(HttpStatus.NOT_FOUND.value(), null));
         }
-         */
-        return personaService.findAll();
     }
 
     @GET

@@ -29,21 +29,22 @@ public class PostController
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Post> findAll()
+    public ResponseEntity<JsonResponseBody> findAll()
     {
-        //return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), postService.findAll()));
-        return postService.findAll();
         
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(new JsonResponseBody(HttpStatus.OK.value(), postService.findAll()));
+        //return postService.findAll();
     }
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Post save(Post p)
+    public ResponseEntity<JsonResponseBody> save(Post p)
     {
-        //ResponseEntity.status(HttpStatus.CREATED).body(new JsonResponseBody(HttpStatus.CREATED.value(), postService.save(p)))
-        return postService.save(p);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new JsonResponseBody(HttpStatus.CREATED.value(), postService.save(p)));
     }
+    
     
     @DELETE
     @Path("/{id}")
@@ -59,7 +60,6 @@ public class PostController
     public List<Comment> getCommentsOfPost(@PathParam("id") Long id)
     {
         return postService.getCommentsOfPost(id);
-        
     }
     
     @AllArgsConstructor
