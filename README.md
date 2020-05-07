@@ -2,7 +2,7 @@
 ___
 ##### Check Swagger Api Documentation: https://app.swaggerhub.com/apis/albertgj/microblog/v2#/
 
-To get swagger.json go to: localhost:8080/api/v2/swagger.json
+To get swagger.json go to: /api/v2/swagger.json or /api/v2/swagger.yaml
 ___
 ### Setup
 - First of all create a mysql database named "microblog"
