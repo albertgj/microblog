@@ -2,7 +2,6 @@ package it.marconivr.microblog.service;
 
 import it.marconivr.microblog.entity.Persona;
 import it.marconivr.microblog.entity.Post;
-import it.marconivr.microblog.security.PersonaDTO;
 import java.util.List;
 import java.util.Optional;
 

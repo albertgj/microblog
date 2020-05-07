@@ -61,7 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
                 .csrf().disable()
                 .cors().and()
                 .authorizeRequests()
-                .antMatchers("/api/v2/authenticate", "/api/v2/register").permitAll()
+                .antMatchers("/api/v2/authenticate", "/api/v2/register", "/api/v2/swagger.json", "/api/v2/swagger.yaml").permitAll()
                 .anyRequest().authenticated().and()
                 .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and()
                 .sessionManagement()

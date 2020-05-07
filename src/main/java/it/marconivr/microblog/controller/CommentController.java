@@ -1,8 +1,10 @@
 package it.marconivr.microblog.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import it.marconivr.microblog.entity.Comment;
 import it.marconivr.microblog.service.CommentService;
-import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -22,8 +24,10 @@ import org.springframework.stereotype.Component;
  * @author albert
  */
 
+
 @Component
-@Path("/commenti")
+@Path("/comments")
+@Api("Comment Controller")
 public class CommentController
 {
 
@@ -32,6 +36,7 @@ public class CommentController
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @ApiOperation(value = "Retrives all comments", httpMethod = "GET", code = 200, produces = "application/json")
     public ResponseEntity<JsonResponseBody> findAll()
     {
         return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), commentService.findAll()));
@@ -40,7 +45,8 @@ public class CommentController
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public ResponseEntity<JsonResponseBody> save(Comment c)
+    @ApiOperation(value = "Saves a comment", httpMethod = "POST", code = 201, consumes = "application/json", produces = "application/json")
+    public ResponseEntity<JsonResponseBody> save(@ApiParam Comment c)
     {
         return ResponseEntity.status(HttpStatus.CREATED).body(new JsonResponseBody(HttpStatus.CREATED.value(), commentService.save(c)));
     }

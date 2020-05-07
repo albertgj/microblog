@@ -1,6 +1,7 @@
 package it.marconivr.microblog.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
 import java.io.Serializable;
 import javax.persistence.*;
 import lombok.*;
@@ -11,6 +12,7 @@ import lombok.*;
  */
 @Entity
 @Table(name = "persona")
+@ApiModel(value = "Persona")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Persona implements Serializable

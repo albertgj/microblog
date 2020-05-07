@@ -1,5 +1,7 @@
 package it.marconivr.microblog.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiParam;
 import it.marconivr.microblog.entity.Comment;
 import it.marconivr.microblog.entity.Post;
 import it.marconivr.microblog.service.PostService;
@@ -21,6 +23,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Path("/posts")
+@Api("Post Controller")
 public class PostController
 {
     
@@ -39,7 +42,7 @@ public class PostController
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public ResponseEntity<JsonResponseBody> save(Post p)
+    public ResponseEntity<JsonResponseBody> save(@ApiParam Post p)
     {
         return ResponseEntity.status(HttpStatus.CREATED).body(new JsonResponseBody(HttpStatus.CREATED.value(), postService.save(p)));
     }
@@ -47,7 +50,7 @@ public class PostController
     
     @DELETE
     @Path("/{id}")
-    public ResponseEntity<JsonResponseBody> deleteById(@PathParam("id") Long id)
+    public ResponseEntity<JsonResponseBody> deleteById(@ApiParam @PathParam("id") Long id)
     {
         postService.deleteById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(new PostController.JsonResponseBody(HttpStatus.NO_CONTENT.value(), null));
@@ -56,7 +59,7 @@ public class PostController
     @GET
     @Path("/commenti/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Comment> getCommentsOfPost(@PathParam("id") Long id)
+    public List<Comment> getCommentsOfPost(@ApiParam @PathParam("id") Long id)
     {
         return postService.getCommentsOfPost(id);
     }

@@ -1,4 +1,4 @@
-package it.marconivr.microblog;
+package it.marconivr.microblog.configurations;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +11,7 @@ import org.springframework.web.filter.CorsFilter;
  * @author albert
  */
 @Configuration
-public class RestConfig
+public class CorsConfig
 {
     @Bean
     public CorsFilter corsFilter()

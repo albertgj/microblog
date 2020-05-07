@@ -1,5 +1,7 @@
 package it.marconivr.microblog.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import it.marconivr.microblog.entity.Persona;
 import it.marconivr.microblog.security.JwtRequest;
 import it.marconivr.microblog.security.JwtResponse;
@@ -25,8 +27,10 @@ import org.springframework.web.bind.annotation.RequestBody;
  */
 @Component
 @Path("/")
+@Api("Jwt Authentication Controller")
 public class JwtAuthenticationController
 {
+
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
@@ -40,6 +44,7 @@ public class JwtAuthenticationController
     @Path("/authenticate")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @ApiOperation(value = "Creates an authentication token", httpMethod = "POST", consumes = "application/json", produces = "application/json")
     public JwtResponse createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception
     {
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
@@ -52,6 +57,7 @@ public class JwtAuthenticationController
     @Path("/register")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @ApiOperation(value = "Registers a new user", httpMethod = "POST", code = 200, consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> saveUser(@RequestBody Persona persona) throws Exception
     {
         return ResponseEntity.ok(personaService.save(persona));
@@ -64,7 +70,7 @@ public class JwtAuthenticationController
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (Exception e)
         {
-            throw new Exception("NON FUNZIONA", e);
+            throw new Exception("ERROR", e);
         }
     }
 }

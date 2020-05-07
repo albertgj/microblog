@@ -1,6 +1,7 @@
 package it.marconivr.microblog.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -24,6 +25,7 @@ import lombok.*;
 @Table(name = "commento")
 @AllArgsConstructor
 @NoArgsConstructor
+@ApiModel(value = "Comment")
 public class Comment implements Serializable
 {
 

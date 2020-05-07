@@ -69,13 +69,17 @@
             <artifactId>jjwt</artifactId>
             <version>0.9.1</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.holon-platform.jaxrs/holon-jaxrs-swagger -->
+        
+        <!-- Start Swagger -->
+        <!-- https://mvnrepository.com/artifact/io.swagger/swagger-jaxrs -->
         <dependency>
-            <groupId>com.holon-platform.jaxrs</groupId>
-            <artifactId>holon-jaxrs-swagger</artifactId>
-            <version>5.4.1</version>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-jaxrs</artifactId>
+            <version>1.6.1</version>
         </dependency>
+
+
+        <!-- End Swagger -->
     </dependencies>
 
     <build>

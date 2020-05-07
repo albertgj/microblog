@@ -1,6 +1,8 @@
 package it.marconivr.microblog.controller;
 
-import it.marconivr.microblog.entity.Persona;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import it.marconivr.microblog.service.PersonaService;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Path("/persone")
+@Api("Persona Controller")
 public class PersonaController
 {
 
@@ -26,6 +29,7 @@ public class PersonaController
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @ApiOperation(value = "Retrives all users", httpMethod = "GET", code = 200, produces = "application/json")
     public ResponseEntity<JsonResponseBody> findAll()
     {
 
@@ -41,7 +45,8 @@ public class PersonaController
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public ResponseEntity<JsonResponseBody> findById(@PathParam("id") Long id)
+    @ApiOperation(value = "Retrives user by id", httpMethod = "GET", code = 200, produces = "application/json")
+    public ResponseEntity<JsonResponseBody> findById(@ApiParam @PathParam("id") Long id)
     {
         if (personaService.findById(id).isPresent())
         {
@@ -55,7 +60,8 @@ public class PersonaController
     @GET
     @Path("/posts/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public ResponseEntity<JsonResponseBody> findAllPosts(@PathParam("id") Long id)
+    @ApiOperation(value = "Retrives posts of a user by id", httpMethod = "GET", code = 200, produces = "application/json")
+    public ResponseEntity<JsonResponseBody> findAllPosts(@ApiParam @PathParam("id") Long id)
     {
         if (!personaService.getPostsOfUser(id).isEmpty())
         {
@@ -67,18 +73,11 @@ public class PersonaController
 
     }
 
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public ResponseEntity<JsonResponseBody> save(Persona p)
-    {
-        return ResponseEntity.status(HttpStatus.CREATED).body(new JsonResponseBody(HttpStatus.CREATED.value(), personaService.save(p)));
-    }
-
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public ResponseEntity<JsonResponseBody> deleteById(@PathParam("id") Long id)
+    @ApiOperation(value = "Deletes user by id", httpMethod = "DELETE", code = 204)
+    public ResponseEntity<JsonResponseBody> deleteById(@ApiParam @PathParam("id") Long id)
     {
         personaService.deleteById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(new JsonResponseBody(HttpStatus.NO_CONTENT.value(), null));
