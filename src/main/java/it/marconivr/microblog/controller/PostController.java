@@ -18,7 +18,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 /**
- *
+ * <h1>Post Controller</h1>
+ * <p>This controller handles posts</p>
  * @author albert
  */
 @Component
@@ -53,15 +54,15 @@ public class PostController
     public ResponseEntity<JsonResponseBody> deleteById(@ApiParam @PathParam("id") Long id)
     {
         postService.deleteById(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(new PostController.JsonResponseBody(HttpStatus.NO_CONTENT.value(), null));
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(new JsonResponseBody(HttpStatus.NO_CONTENT.value(), null));
     }
     
     @GET
-    @Path("/commenti/{id}")
+    @Path("/{id}/comments")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Comment> getCommentsOfPost(@ApiParam @PathParam("id") Long id)
+    public ResponseEntity<JsonResponseBody> getCommentsOfPost(@ApiParam @PathParam("id") Long id)
     {
-        return postService.getCommentsOfPost(id);
+        return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), postService.getCommentsOfPost(id)));
     }
     
     @AllArgsConstructor

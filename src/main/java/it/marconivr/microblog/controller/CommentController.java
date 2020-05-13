@@ -5,11 +5,8 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import it.marconivr.microblog.entity.Comment;
 import it.marconivr.microblog.service.CommentService;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,11 +17,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 /**
- *
+ * <h1>Comment Controller</h1>
+ * <p>This controller handles comments</p>
  * @author albert
  */
-
-
 @Component
 @Path("/comments")
 @Api("Comment Controller")
@@ -49,6 +45,15 @@ public class CommentController
     public ResponseEntity<JsonResponseBody> save(@ApiParam Comment c)
     {
         return ResponseEntity.status(HttpStatus.CREATED).body(new JsonResponseBody(HttpStatus.CREATED.value(), commentService.save(c)));
+    }
+
+    @DELETE
+    @Path("/{id}")
+    @ApiOperation(value = "Deletes a comment", httpMethod = "DELETE", code = 204)
+    public ResponseEntity<JsonResponseBody> delete(@PathParam("id") Long id)
+    {
+        commentService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(new JsonResponseBody(HttpStatus.NO_CONTENT.value(), null));
     }
 
     @AllArgsConstructor

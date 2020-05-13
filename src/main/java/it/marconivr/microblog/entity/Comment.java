@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModel;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,11 +17,13 @@ import javax.persistence.TemporalType;
 import lombok.*;
 
 /**
+ * <h1>Comment entity </h1>
  *
  * @author albert
+ * @version 1.0.0
  */
 @Entity
-@Table(name = "commento")
+@Table(name = "comment")
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel(value = "Comment")
@@ -52,9 +53,9 @@ public class Comment implements Serializable
     @Setter
     private Post post;
 
-    @ManyToOne(targetEntity = Persona.class)
-    @JoinColumn(name = "PERSONAID", nullable = false)
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "USERID", nullable = false)
     @Getter
     @Setter
-    private Persona persona;
+    private User user;
 }

@@ -10,7 +10,8 @@ import java.util.List;
  */
 public interface CommentService
 {
-    public Long count();
-    public List<Comment> findAll();
-    public Comment save(Comment c);
+    Long count();
+    List<Comment> findAll();
+    Comment save(Comment c);
+    void delete(Long id);
 }

@@ -20,8 +20,6 @@ public class CommentServiceImpl implements CommentService
 
     @Autowired
     private CommentDao commentDao;
-    @Autowired
-    private PostDao postDao;
 
     @Override
     public Long count()
@@ -40,6 +38,9 @@ public class CommentServiceImpl implements CommentService
     {
         return commentDao.saveAndFlush(c);
     }
+
+    @Override
+    public void delete(Long id) { commentDao.deleteById(id); }
 
 
 }

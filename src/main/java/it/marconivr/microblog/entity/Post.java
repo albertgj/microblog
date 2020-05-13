@@ -8,8 +8,10 @@ import javax.persistence.*;
 import lombok.*;
 
 /**
+ * <h1>Post Entity</h1>
  *
  * @author albert
+ * @version 1.0.0
  */
 @Entity
 @Table(name = "post")
@@ -41,9 +43,9 @@ public class Post implements Serializable
     @Setter
     private String text;
 
-    @ManyToOne(targetEntity = Persona.class)
-    @JoinColumn(name = "PERSONAID", nullable = false)
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "USERID", nullable = false)
     @Getter
     @Setter
-    private Persona persona;
+    private User user;
 }

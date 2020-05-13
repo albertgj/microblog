@@ -8,8 +8,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
+ * <h1>Post Dao</h1>
  *
  * @author albert
+ * @version 1.0.0
  */
 @Repository
 public interface PostDao extends JpaRepository<Post, Long>
