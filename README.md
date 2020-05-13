@@ -1,6 +1,6 @@
 ## Progetto Microblog REST
 ___
-##### Check Swagger Api Documentation: https://app.swaggerhub.com/apis/albertgj/microblog/v2#/
+##### Check Swagger Api Documentation: https://app.swaggerhub.com/apis-docs/albertgj/microblog/v2#/
 
 To get swagger.json/swagger.yaml go to: /api/v2/swagger.json or /api/v2/swagger.yaml
 ___
