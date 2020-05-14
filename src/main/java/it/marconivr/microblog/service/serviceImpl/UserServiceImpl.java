@@ -4,7 +4,6 @@ import it.marconivr.microblog.dao.UserDao;
 import it.marconivr.microblog.entity.User;
 import it.marconivr.microblog.entity.Post;
 import it.marconivr.microblog.service.UserService;
-
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

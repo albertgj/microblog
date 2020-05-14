@@ -5,10 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import it.marconivr.microblog.dao.RoleDao;
 import it.marconivr.microblog.entity.User;
 import it.marconivr.microblog.security.jwt.JwtUtils;
-
 import java.util.*;
-import java.util.stream.Collectors;
-
 import it.marconivr.microblog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +21,6 @@ import it.marconivr.microblog.payload.request.LoginRequest;
 import it.marconivr.microblog.payload.request.RegisterRequest;
 import it.marconivr.microblog.payload.response.JwtResponse;
 import it.marconivr.microblog.payload.response.MessageResponse;
-import it.marconivr.microblog.security.services.UserDetailsImpl;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -69,11 +65,6 @@ public class AuthController
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String jwt = jwtUtils.generateToken(authentication);
-
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        List<String> roles = userDetails.getAuthorities().stream()
-                .map(item -> item.getAuthority())
-                .collect(Collectors.toList());
 
         return ResponseEntity.ok(new JwtResponse(jwt));
     }
