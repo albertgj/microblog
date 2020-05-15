@@ -17,7 +17,9 @@ import org.springframework.stereotype.Component;
 /**
  * <h1>User Controller</h1>
  * <p>This controller handles users</p>
+ * 
  * @author albert
+ * @version 1.0.0
  */
 @Component
 @Path("/users")

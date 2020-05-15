@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import it.marconivr.microblog.entity.Comment;
 import it.marconivr.microblog.service.CommentService;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import lombok.AllArgsConstructor;

@@ -9,7 +9,9 @@ import org.springframework.web.filter.CorsFilter;
 /**
  * <h1>Cors Configuration</h1>
  * <p>Class needed for CORS</p>
+ * 
  * @author albert
+ * @version 1.0.0
  */
 @Configuration
 public class CorsConfig

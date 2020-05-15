@@ -1,7 +1,6 @@
 package it.marconivr.microblog.service;
 
 import it.marconivr.microblog.entity.Comment;
-import it.marconivr.microblog.entity.Post;
 import java.util.List;
 
 /**

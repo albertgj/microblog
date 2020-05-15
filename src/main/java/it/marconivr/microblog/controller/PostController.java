@@ -2,10 +2,8 @@ package it.marconivr.microblog.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
-import it.marconivr.microblog.entity.Comment;
 import it.marconivr.microblog.entity.Post;
 import it.marconivr.microblog.service.PostService;
-import java.util.List;
 import javax.ws.rs.*;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
@@ -20,7 +18,9 @@ import org.springframework.stereotype.Component;
 /**
  * <h1>Post Controller</h1>
  * <p>This controller handles posts</p>
+ * 
  * @author albert
+ * @version 1.0.0
  */
 @Component
 @Path("/posts")
@@ -51,6 +51,7 @@ public class PostController
     
     @DELETE
     @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public ResponseEntity<JsonResponseBody> deleteById(@ApiParam @PathParam("id") Long id)
     {
         postService.deleteById(id);
